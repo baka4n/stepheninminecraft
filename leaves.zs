@@ -12,17 +12,18 @@ import crafttweaker.item.IItemStack;
 
 events.onBlockHarvestDrops(function(event as BlockHarvestDropsEvent) {            
 //event info BlockHarvestDropsEvent   china:这个时间是方块采掘掉落事件
-	var blockID as string = event.block.definition.id;                              
-  // blockID is string about event.block.definition.id china：这个方块id赋值为方块掉落id，属于数值型
+	var blockID as string = event.block.definition.id;
+	val meta as int = event.block.meta;
+  // blockID is string about event.block.definition.id : meta china：这个方块赋值，属于数值型.
   
 	if(event.silkTouch) return;
   
-	if(blockID == "minecraft:leaves") {
+	if(blockID == "minecraft:leaves" && meta == 0) {
 		event.drops = leaveDrops;
 	}
 });
 
 static leaveDrops as WeightedItemStack[] = [
 	<minecraft:stick> % 20,                  //20% get stick
-	<minecraft:sapling> % 30,                //30% get spling
+	<minecraft:sapling:0> % 30,                //30% get spling
 ];
