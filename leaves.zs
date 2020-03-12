@@ -16,7 +16,7 @@ events.onBlockHarvestDrops(function(event as BlockHarvestDropsEvent) {
 	val meta as int = event.block.meta;
   // blockID is string about event.block.definition.id : meta china：这个方块赋值，属于数值型.
   
-	if(event.silkTouch) return;
+	if(event.silkTouch) return; // silkTouch 精准采集掉落原来的物品
   
 	if(blockID == "minecraft:leaves" && meta == 0) {
 		event.drops = leaveDrops;
